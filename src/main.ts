@@ -6,7 +6,7 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 // @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
-import globalComponent from "@/components"
+import globalComponent from '@/components'
 const app = createApp(App)
 app.use(globalComponent)
 app.use(ElementPlus, {
