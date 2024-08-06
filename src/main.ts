@@ -7,7 +7,7 @@ import 'virtual:svg-icons-register'
 // @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import globalComponent from '@/components'
-import router from "@/router"
+import router from '@/router'
 import pinia from './store'
 const app = createApp(App)
 app.use(globalComponent)
