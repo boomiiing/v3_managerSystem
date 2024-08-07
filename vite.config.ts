@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
@@ -12,6 +13,7 @@ export default defineConfig(({ command }) => {
         // 确保当前为开发环境可以使用mock
         localEnabled: command === 'serve',
       }),
+      VueSetupExtend(),
       createSvgIconsPlugin({
         iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
         symbolId: 'icon-[dir]-[name]',

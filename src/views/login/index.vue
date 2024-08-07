@@ -7,7 +7,9 @@
           :model="ruleForm"
           status-icon
           label-width="auto"
+          :rules="rules"
           class="form_box"
+          ref="loginForms"
         >
           <h1>Hi!</h1>
           <h2>欢迎来到！</h2>
@@ -51,7 +53,17 @@ let ruleForm = reactive({
 let loginLoading = ref(false)
 let userStore = useUserStore()
 let $router = useRouter()
+const loginForms = ref()
+const rules = {
+  username:[
+    { required: true, message: '请输入用户名称', trigger: 'blur' },
+  ],
+  password:[
+    { required: true, message: '请输入密码', trigger: 'blur' },
+  ],
+  }
 async function submitForm() {
+  await loginForms.value.validate()
   loginLoading.value = true
   try {
     await userStore.userLogin(ruleForm)
@@ -83,7 +95,7 @@ async function submitForm() {
     width: 60%;
     margin: 30px auto;
     padding: 30px;
-    background-color: hsl(197, 71%, 73%, 0.3);
+    background-color: rgba(39, 65, 75, 0.3);
     border-radius: 15px;
     position: relative;
     top: 60%;
