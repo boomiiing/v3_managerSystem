@@ -2,13 +2,13 @@ import { reqLogin } from '@/api/user'
 import { defineStore } from 'pinia'
 import type { loginForm } from '@/api/user/type'
 import type { UserState } from '@/store/modules/types/type'
-import {constantRoute} from '@/router/routers'
+import { constantRoute } from '@/router/routers'
 import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
 let useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(),
-      menuRoutes:constantRoute
+      menuRoutes: constantRoute,
     }
   },
   actions: {
@@ -26,4 +26,3 @@ let useUserStore = defineStore('User', {
   getters: {},
 })
 export default useUserStore
-  

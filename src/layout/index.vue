@@ -50,13 +50,8 @@
 <script setup lang="ts" name="Layout">
 import setting from '@/setting'
 import Menu from '@/layout/menu/index.vue'
-import {
-  HomeFilled,
-  Lock,
-  DataBoard,
-  Goods
-} from '@element-plus/icons-vue'
-import useUserStore from '@/store/modules/user';
+import { HomeFilled, Lock, DataBoard, Goods } from '@element-plus/icons-vue'
+import useUserStore from '@/store/modules/user'
 let userStore = useUserStore()
 </script>
 <style scoped lang="scss">

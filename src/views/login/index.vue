@@ -55,13 +55,9 @@ let userStore = useUserStore()
 let $router = useRouter()
 const loginForms = ref()
 const rules = {
-  username:[
-    { required: true, message: '请输入用户名称', trigger: 'blur' },
-  ],
-  password:[
-    { required: true, message: '请输入密码', trigger: 'blur' },
-  ],
-  }
+  username: [{ required: true, message: '请输入用户名称', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+}
 async function submitForm() {
   await loginForms.value.validate()
   loginLoading.value = true
