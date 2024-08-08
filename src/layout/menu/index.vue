@@ -1,11 +1,7 @@
 <template>
   <template v-for="(item, index) in menuList" :key="item.path">
     <template v-if="!item.children">
-      <el-menu-item
-        v-if="!item.meta.hidden"
-        :index="item.path"
-        
-      >
+      <el-menu-item v-if="!item.meta.hidden" :index="item.path">
         <el-icon>
           <component :is="item.meta.icon"></component>
         </el-icon>
@@ -19,7 +15,7 @@
         item.children && item.children.length == 1 && !item.children[0].children
       "
     >
-        <el-menu-item :index="item.path" v-if="!item.children[0].meta.hidden"  >
+      <el-menu-item :index="item.path" v-if="!item.children[0].meta.hidden">
         <el-icon>
           <component :is="item.children[0].meta.icon"></component>
         </el-icon>
@@ -36,7 +32,7 @@
         item.children[0].children.length > 0
       "
     >
-      <el-sub-menu :index="item.path" v-if="!item.children[0].meta.hidden"  >
+      <el-sub-menu :index="item.path" v-if="!item.children[0].meta.hidden">
         <template #title>
           <el-icon>
             <component :is="item.children[0].meta.icon"></component>
@@ -47,7 +43,7 @@
       </el-sub-menu>
     </template>
     <template v-else>
-      <el-sub-menu v-if="!item.meta.hidden" :index="item.path"  >
+      <el-sub-menu v-if="!item.meta.hidden" :index="item.path">
         <template #title>
           <el-icon>
             <component :is="item.meta.icon"></component>

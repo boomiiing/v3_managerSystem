@@ -10,7 +10,7 @@
           background-color="#545c64"
           style="width: 100%; border: none"
           text-color="#fff"
-          router=true
+          router="true"
           :default-active="$route.path"
         >
           <Menu :menuList="userStore.menuRoutes"></Menu>
@@ -27,8 +27,8 @@
 import setting from '@/setting'
 import Menu from '@/layout/menu/index.vue'
 import useUserStore from '@/store/modules/user'
-import Main from "@/layout/main/index.vue"
-import { useRoute } from 'vue-router' 
+import Main from '@/layout/main/index.vue'
+import { useRoute } from 'vue-router'
 let userStore = useUserStore()
 let $route = useRoute()
 console.log($route.path)

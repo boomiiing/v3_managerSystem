@@ -17,7 +17,7 @@ export const constantRoute = [
     meta: {
       title: 'Layout',
       hidden: false,
-      icon:'setting'
+      icon: 'setting',
     },
     redirect: '/home',
     children: [
@@ -28,7 +28,7 @@ export const constantRoute = [
         meta: {
           title: '首页',
           hidden: false,
-          icon:'HomeFilled'
+          icon: 'HomeFilled',
         },
       },
     ],
@@ -40,7 +40,7 @@ export const constantRoute = [
     meta: {
       title: '数据大屏',
       hidden: false,
-      icon:'DataBoard'
+      icon: 'DataBoard',
     },
   },
   {
@@ -50,7 +50,7 @@ export const constantRoute = [
     meta: {
       title: '权限管理',
       hidden: false,
-      icon:'Lock'
+      icon: 'Lock',
     },
     children: [
       {
@@ -60,7 +60,7 @@ export const constantRoute = [
         meta: {
           title: '用户管理',
           hidden: false,
-          icon:'User'
+          icon: 'User',
         },
       },
       {
@@ -70,7 +70,7 @@ export const constantRoute = [
         meta: {
           title: '角色管理',
           hidden: false,
-          icon:'Avatar'
+          icon: 'Avatar',
         },
       },
       {
@@ -80,7 +80,7 @@ export const constantRoute = [
         meta: {
           title: '菜单管理',
           hidden: false,
-          icon:'Grid'
+          icon: 'Grid',
         },
       },
     ],
@@ -92,7 +92,7 @@ export const constantRoute = [
     meta: {
       title: '商品管理',
       hidden: false,
-      icon:'Goods'
+      icon: 'Goods',
     },
     children: [
       {
@@ -102,7 +102,7 @@ export const constantRoute = [
         meta: {
           title: '商品',
           hidden: false,
-          icon:'ShoppingCartFull'
+          icon: 'ShoppingCartFull',
         },
       },
       {
@@ -112,7 +112,7 @@ export const constantRoute = [
         meta: {
           title: 'Attr管理',
           hidden: false,
-          icon:'Tools'
+          icon: 'Tools',
         },
       },
       {
@@ -122,7 +122,7 @@ export const constantRoute = [
         meta: {
           title: 'Sku管理',
           hidden: false,
-          icon:'Lock'
+          icon: 'Lock',
         },
       },
       {
@@ -132,7 +132,7 @@ export const constantRoute = [
         meta: {
           title: 'Spu管理',
           hidden: false,
-          icon:'Lock'
+          icon: 'Lock',
         },
       },
     ],
