@@ -7,10 +7,14 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 // @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import globalComponent from '@/components'
 import router from '@/router'
 import pinia from './store'
 const app = createApp(App)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 app.use(globalComponent)
 app.use(router)
 app.use(pinia)
