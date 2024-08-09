@@ -1,9 +1,11 @@
 <template>
   <div class="layout_container">
-    <div class="layout_menu" :class="{'flod': layOutSettingStore.fold}">
+    <div class="layout_menu" :class="{ flod: layOutSettingStore.fold }">
       <h5 class="mb-2">
         <svg-icon :name="setting.logo" height="40px" width="40px"></svg-icon>
-        <p v-show="!layOutSettingStore.fold" style="text-wrap: nowrap;">{{ setting.title }}</p>
+        <p v-show="!layOutSettingStore.fold" style="text-wrap: nowrap">
+          {{ setting.title }}
+        </p>
       </h5>
       <el-scrollbar class="scroll_bar">
         <el-menu
@@ -12,17 +14,17 @@
           text-color="#fff"
           router="true"
           :default-active="$route.path"
-          :collapse = "layOutSettingStore.fold"
-          :collapse-transition = "false"
+          :collapse="layOutSettingStore.fold"
+          :collapse-transition="false"
         >
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="layout_tabbar" :class="{'flod': layOutSettingStore.fold}" >
+    <div class="layout_tabbar" :class="{ flod: layOutSettingStore.fold }">
       <Tabbar></Tabbar>
     </div>
-    <div class="layout_main"  :class="{'flod': layOutSettingStore.fold}" >
+    <div class="layout_main" :class="{ flod: layOutSettingStore.fold }">
       <Main></Main>
     </div>
   </div>
@@ -31,7 +33,7 @@
 import setting from '@/setting'
 import Menu from '@/layout/menu/index.vue'
 import useUserStore from '@/store/modules/user'
-import {useLayOutSettingStore} from '@/store/modules/setting'
+import { useLayOutSettingStore } from '@/store/modules/setting'
 import Main from '@/layout/main/index.vue'
 import { useRoute } from 'vue-router'
 import Tabbar from '@/layout/tabbar/index.vue'
@@ -49,7 +51,7 @@ console.log($route.path)
     height: 100%;
     width: $base_menu_width;
     background: $base_menu_background;
-    transition: all .5s;
+    transition: all 0.5s;
     .mb-2 {
       margin: 0;
       height: 50px;
@@ -76,9 +78,9 @@ console.log($route.path)
     height: $base_tabbar_height;
     width: calc(100% - $base_menu_width);
     background-color: #fff;
-    transition: all .5s;
+    transition: all 0.5s;
     &.flod {
-      width: calc(100% - $base_menu_min_width) ;
+      width: calc(100% - $base_menu_min_width);
     }
   }
   .layout_main {
@@ -90,9 +92,9 @@ console.log($route.path)
     padding: 10px;
     overflow: auto;
     box-sizing: border-box;
-    transition: all .5s;
+    transition: all 0.5s;
     &.flod {
-      width: calc(100% - $base_menu_min_width) ;
+      width: calc(100% - $base_menu_min_width);
     }
   }
 }

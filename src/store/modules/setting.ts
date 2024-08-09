@@ -1,12 +1,11 @@
-import {defineStore} from 'pinia'
+import { defineStore } from 'pinia'
 
-export const useLayOutSettingStore = defineStore('SettingStore',{
-  actions:{},
-  state(){
-    return{
-      fold:false
+export const useLayOutSettingStore = defineStore('SettingStore', {
+  actions: {},
+  state() {
+    return {
+      fold: false,
     }
   },
-  getters:{
-  }
+  getters: {},
 })
