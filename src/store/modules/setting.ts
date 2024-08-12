@@ -5,7 +5,7 @@ export const useLayOutSettingStore = defineStore('SettingStore', {
   state() {
     return {
       fold: false,
-      refresh: false
+      refresh: false,
     }
   },
   getters: {},

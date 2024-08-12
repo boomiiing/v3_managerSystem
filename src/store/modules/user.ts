@@ -1,4 +1,4 @@
-import { reqLogin,reqUserInfo } from '@/api/user'
+import { reqLogin, reqUserInfo } from '@/api/user'
 import { defineStore } from 'pinia'
 import type { loginForm } from '@/api/user/type'
 import type { UserState } from '@/store/modules/types/type'
@@ -9,8 +9,8 @@ let useUserStore = defineStore('User', {
     return {
       token: GET_TOKEN(),
       menuRoutes: constantRoute,
-      username:'',
-      avatar:''
+      username: '',
+      avatar: '',
     }
   },
   actions: {
@@ -34,13 +34,12 @@ let useUserStore = defineStore('User', {
         return Promise.reject('获取用户信息失败！')
       }
     },
-    userLogout(){
+    userLogout() {
       this.token = ''
       this.username = ''
       this.avatar = ''
       REMOVE_TOKEN()
-
-    }
+    },
   },
   getters: {},
 })
