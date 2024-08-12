@@ -1,4 +1,3 @@
-import { fa } from 'element-plus/es/locales.mjs'
 
 export const constantRoute = [
   {
@@ -15,9 +14,9 @@ export const constantRoute = [
     component: () => import('@/layout/index.vue'),
     name: 'Layout',
     meta: {
-      title: 'Layout',
+      title: '',
       hidden: false,
-      icon: 'setting',
+      icon: '',
     },
     redirect: '/home',
     children: [
@@ -52,6 +51,7 @@ export const constantRoute = [
       hidden: false,
       icon: 'Lock',
     },
+    redirect: '/acl/user',
     children: [
       {
         path: '/acl/user',
@@ -94,6 +94,7 @@ export const constantRoute = [
       hidden: false,
       icon: 'Goods',
     },
+    redirect: '/product/trademark',
     children: [
       {
         path: '/product/trademark',

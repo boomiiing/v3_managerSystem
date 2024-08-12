@@ -6,7 +6,7 @@
         <el-form
           :model="ruleForm"
           status-icon
-          label-width="auto"
+          label-width="1"
           :rules="rules"
           class="form_box"
           ref="loginForms"

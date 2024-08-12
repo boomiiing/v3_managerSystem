@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>hello</h1>
+    <h1>商品页面</h1>
   </div>
 </template>
 <script setup lang="ts">

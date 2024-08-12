@@ -12,7 +12,7 @@
           background-color="#545c64"
           style="width: 100%; border: none"
           text-color="#fff"
-          router="true"
+          :router="true"
           :default-active="$route.path"
           :collapse="layOutSettingStore.fold"
           :collapse-transition="false"

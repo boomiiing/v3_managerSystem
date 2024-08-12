@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { constantRoute } from '@/router/routers'
-let router = createRouter({
+let routers = createRouter({
   history: createWebHashHistory(),
   routes: constantRoute,
   scrollBehavior() {
@@ -11,4 +11,4 @@ let router = createRouter({
   },
 })
 
-export default router
+export default routers

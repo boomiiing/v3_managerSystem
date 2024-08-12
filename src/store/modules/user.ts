@@ -1,14 +1,16 @@
-import { reqLogin } from '@/api/user'
+import { reqLogin,reqUserInfo } from '@/api/user'
 import { defineStore } from 'pinia'
 import type { loginForm } from '@/api/user/type'
 import type { UserState } from '@/store/modules/types/type'
 import { constantRoute } from '@/router/routers'
-import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 let useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(),
       menuRoutes: constantRoute,
+      username:'',
+      avatar:''
     }
   },
   actions: {
@@ -22,6 +24,23 @@ let useUserStore = defineStore('User', {
         return Promise.reject(new Error(result.data.message))
       }
     },
+    async userInfo() {
+      const result = await reqUserInfo()
+      if (result.code == 200) {
+        this.avatar = result.data.checkUser.avatar
+        this.username = result.data.checkUser.username
+        return 'success'
+      } else {
+        return Promise.reject('获取用户信息失败！')
+      }
+    },
+    userLogout(){
+      this.token = ''
+      this.username = ''
+      this.avatar = ''
+      REMOVE_TOKEN()
+
+    }
   },
   getters: {},
 })
