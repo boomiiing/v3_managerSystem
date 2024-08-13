@@ -8,8 +8,8 @@ import pinia from './store'
 import useUserStore from '@/store/modules/user'
 const userStore = useUserStore(pinia)
 //路由前置守卫
-router.beforeEach(async(to, from, next) => {
-  document.title = setting.title +'-'+ to.meta.title
+router.beforeEach(async (to, from, next) => {
+  document.title = setting.title + '-' + to.meta.title
   nprogress.start()
   let token = userStore.token
   if (token) {

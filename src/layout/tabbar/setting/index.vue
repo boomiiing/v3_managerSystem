@@ -39,7 +39,7 @@ function fullScreen() {
   }
 }
 async function userLogout() {
- await userStore.userLogout()
+  await userStore.userLogout()
   $router.replace({ path: '/login' })
 }
 </script>
