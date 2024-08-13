@@ -38,8 +38,8 @@ function fullScreen() {
     document.exitFullscreen()
   }
 }
-function userLogout() {
-  userStore.userLogout()
+async function userLogout() {
+ await userStore.userLogout()
   $router.replace({ path: '/login' })
 }
 </script>
