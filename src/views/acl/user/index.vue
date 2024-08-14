@@ -160,7 +160,7 @@ async function getHasUser(pager = 1) {
 }
 function setRole(id) {}
 function editUser(row: User) {
-  Object.assign(userform,row)
+  Object.assign(userform, row)
   isAdd.value = false
   drawerFlag.value = true
 }

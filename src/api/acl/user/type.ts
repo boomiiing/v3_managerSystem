@@ -25,7 +25,5 @@ export interface allResponseData extends ResponseData {
   }
 }
 export interface saveResponseData extends ResponseData {
-  data?:{}|null
+  data?: {} | null
 }
-
-
