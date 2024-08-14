@@ -25,7 +25,7 @@
       <Tabbar></Tabbar>
     </div>
     <div class="layout_main" :class="{ flod: layOutSettingStore.fold }">
-      <Main></Main>
+      <Main style="height:100%"></Main>
     </div>
   </div>
 </template>

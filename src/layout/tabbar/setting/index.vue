@@ -1,4 +1,5 @@
 <template>
+  <div>
   <el-button size="small" icon="Refresh" circle @click="updateRefsh" />
   <el-button size="small" icon="FullScreen" circle @click="fullScreen" />
   <el-button size="small" icon="Setting" circle />
@@ -19,6 +20,7 @@
       </el-dropdown-menu>
     </template>
   </el-dropdown>
+</div>
 </template>
 <script setup lang="ts" name="Setting">
 import { useLayOutSettingStore } from '@/store/modules/setting'
