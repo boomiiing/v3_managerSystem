@@ -1,5 +1,4 @@
 <template>
-  <div>
     <el-icon @click="changeIcon">
       <component :is="layOutSettingStore.fold ? 'Expand' : 'Fold'"></component>
     </el-icon>
@@ -16,7 +15,6 @@
         <span>{{ item.meta.title }}</span>
       </el-breadcrumb-item>
     </el-breadcrumb>
-  </div>
 </template>
 <script setup lang="ts" name="Breadcrumb">
 import { useLayOutSettingStore } from '@/store/modules/setting'

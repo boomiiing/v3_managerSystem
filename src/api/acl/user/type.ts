@@ -27,3 +27,25 @@ export interface allResponseData extends ResponseData {
 export interface saveResponseData extends ResponseData {
   data?: {} | null
 }
+
+export interface roleInfo  {
+  id?:number
+  createTime?: string
+  updateTime?:string
+  roleName: string
+  remark: null|string
+}
+export type roles = roleInfo[]
+export interface allRoleResponse extends ResponseData {
+  data:{
+    assignRoles:roles,
+    allRolesList:roles
+  }
+}
+export interface assignRoles {
+    roleIdList: number[],
+    userId: number
+}
+export interface assignRolesData extends ResponseData {
+  data:  null
+}
