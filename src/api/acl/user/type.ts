@@ -28,24 +28,24 @@ export interface saveResponseData extends ResponseData {
   data?: {} | null
 }
 
-export interface roleInfo  {
-  id?:number
+export interface roleInfo {
+  id?: number
   createTime?: string
-  updateTime?:string
+  updateTime?: string
   roleName: string
-  remark: null|string
+  remark: null | string
 }
 export type roles = roleInfo[]
 export interface allRoleResponse extends ResponseData {
-  data:{
-    assignRoles:roles,
-    allRolesList:roles
+  data: {
+    assignRoles: roles
+    allRolesList: roles
   }
 }
 export interface assignRoles {
-    roleIdList: number[],
-    userId: number
+  roleIdList: number[]
+  userId: number
 }
 export interface assignRolesData extends ResponseData {
-  data:  null
+  data: null
 }

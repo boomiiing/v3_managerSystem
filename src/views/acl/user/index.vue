@@ -6,15 +6,23 @@
           <el-input placeholder="请输入名称" clearable v-model="keyword" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="search" :disabled="!keyword">搜索</el-button>
-          <el-button type="primary" plain  @click="reset">重置</el-button>
+          <el-button type="primary" @click="search" :disabled="!keyword">
+            搜索
+          </el-button>
+          <el-button type="primary" plain @click="reset">重置</el-button>
         </el-form-item>
       </el-form>
     </el-card>
     <el-card shadow="always" class="main_body">
       <el-row style="height: 40px">
         <el-button type="primary" @click="addUser">新增</el-button>
-        <el-button type="danger" @click="batchRemove" :disabled="multipleSelection.length==0">批量删除</el-button>
+        <el-button
+          type="danger"
+          @click="batchRemove"
+          :disabled="multipleSelection.length == 0"
+        >
+          批量删除
+        </el-button>
       </el-row>
       <el-row style="height: calc(100% - 65px)">
         <el-table
@@ -179,7 +187,7 @@ import {
   getAllRole,
   doAssignRole,
   removeuser,
-  BatchRemoveuser
+  BatchRemoveuser,
 } from '@/api/acl/user/index'
 import {
   allResponseData,
@@ -219,7 +227,7 @@ async function getHasUser(pager = 1) {
   const result: allResponseData = await reqUserInfo(
     pageNum.value,
     pageSize.value,
-    keyword.value
+    keyword.value,
   )
   if (result.code == 200) {
     tableData.value = result.data.records
@@ -368,39 +376,39 @@ const submitUserRole = async () => {
 }
 const multipleSelection = ref<number[]>([])
 const handleSelectionChange = (val: User[]) => {
-  multipleSelection.value = val.map(ele=>ele.id as number)
+  multipleSelection.value = val.map((ele) => ele.id as number)
 }
-const batchRemove = async()=>{
+const batchRemove = async () => {
   const confirmed = await ElMessageBox.confirm(
-      '是否确认删除选中的用户?',
-      '提示',
-      {
-        confirmButtonText: '确认',
-        cancelButtonText: '取消',
+    '是否确认删除选中的用户?',
+    '提示',
+    {
+      confirmButtonText: '确认',
+      cancelButtonText: '取消',
+      type: 'warning',
+    },
+  )
+  if (confirmed === 'confirm') {
+    const result = await BatchRemoveuser(multipleSelection.value)
+    if (result.code == 200) {
+      getHasUser(pageNum.value)
+      ElMessage({
+        message: '用户删除成功！',
+        type: 'success',
+      })
+    } else {
+      ElMessage({
+        message: '用户删除失败！',
         type: 'warning',
-      },
-    )
-    if (confirmed === 'confirm') {
-      const result = await BatchRemoveuser(multipleSelection.value)
-      if (result.code == 200) {
-        getHasUser(pageNum.value)
-        ElMessage({
-          message: '用户删除成功！',
-          type: 'success',
-        })
-      } else {
-        ElMessage({
-          message: '用户删除失败！',
-          type: 'warning',
-        })
-      }
+      })
     }
+  }
 }
 let keyword = ref('')
-const search = ()=>{
+const search = () => {
   getHasUser()
 }
-const reset = ()=>{
+const reset = () => {
   keyword.value = ''
   getHasUser()
 }

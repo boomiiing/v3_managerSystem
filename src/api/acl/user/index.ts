@@ -14,10 +14,12 @@ enum API {
   ALLROLE_URL = '/admin/acl/user/toAssign/',
   ASSIGNROLES_URL = '/admin/acl/user/doAssignRole',
   REMOVESOMEONE_URL = '/admin/acl/user/remove/',
-  BATCHREMOVE_URL = '/admin/acl/user/batchRemove'
+  BATCHREMOVE_URL = '/admin/acl/user/batchRemove',
 }
-export const reqUserInfo = (page: number, limit: number, username?:string) =>
-  request.get<any, allResponseData>(API.ALLUSER_URL + `${page}/${limit}/?username=${username}`)
+export const reqUserInfo = (page: number, limit: number, username?: string) =>
+  request.get<any, allResponseData>(
+    API.ALLUSER_URL + `${page}/${limit}/?username=${username}`,
+  )
 export const reqSaveUser = (data: User) =>
   request.post<any, saveResponseData>(API.SAVEUSER_URL, data)
 export const reqUpdateUser = (data: User) =>
@@ -27,6 +29,6 @@ export const getAllRole = (userId: number) =>
 export const doAssignRole = (data: assignRoles) =>
   request.post<any, assignRolesData>(API.ASSIGNROLES_URL, data)
 export const removeuser = (id: number) =>
-  request.delete<any,assignRolesData>(API.REMOVESOMEONE_URL + id)
+  request.delete<any, assignRolesData>(API.REMOVESOMEONE_URL + id)
 export const BatchRemoveuser = (idList: number[]) =>
-  request.delete<any,assignRolesData>(API.BATCHREMOVE_URL , {data:idList})
+  request.delete<any, assignRolesData>(API.BATCHREMOVE_URL, { data: idList })
