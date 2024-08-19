@@ -78,7 +78,12 @@
 </template>
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
-import { reqGetAllRole, reqSetNewRole, reqAlterRole, reqDeleteRole } from '@/api/acl/role/index'
+import {
+  reqGetAllRole,
+  reqSetNewRole,
+  reqAlterRole,
+  reqDeleteRole,
+} from '@/api/acl/role/index'
 import { ResponseRoleData, record } from '@/api/acl/role/type'
 import { ElMessage, ElMessageBox } from 'element-plus'
 let keyword = ref('')
@@ -99,7 +104,7 @@ const getAllRole = async (page = 1) => {
   }
 }
 const handleSelectionChange = () => {}
-const alterRole = async(data:record) => {
+const alterRole = async (data: record) => {
   const result = await ElMessageBox.prompt('请输入角色名称', '提示', {
     confirmButtonText: '确认',
     cancelButtonText: '取消',
@@ -108,7 +113,7 @@ const alterRole = async(data:record) => {
     inputErrorMessage: '请输入角色名称！',
   })
   if (result.action === 'confirm') {
-    const response = await reqAlterRole({id:data.id,roleName:result.value})
+    const response = await reqAlterRole({ id: data.id, roleName: result.value })
     if (response.code == 200) {
       getAllRole()
       ElMessage({
@@ -118,8 +123,8 @@ const alterRole = async(data:record) => {
     }
   }
 }
-const setRole = (data:record) => {}
-const deleteRole = async(id:number) => {
+const setRole = (data: record) => {}
+const deleteRole = async (id: number) => {
   try {
     const confirmed = await ElMessageBox.confirm(
       '是否确认删除当前角色?',
@@ -167,7 +172,7 @@ const addNewRole = async () => {
     inputErrorMessage: '请输入角色名称！',
   })
   if (result.action === 'confirm') {
-    const response = await reqSetNewRole({roleName:result.value})
+    const response = await reqSetNewRole({ roleName: result.value })
     if (response.code == 200) {
       getAllRole()
       ElMessage({

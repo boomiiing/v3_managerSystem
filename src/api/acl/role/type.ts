@@ -1,30 +1,30 @@
-export  interface  ResponseData{
-  code:number
-  message:string
-  ok:string
+export interface ResponseData {
+  code: number
+  message: string
+  ok: string
 }
 export type record = {
-  id:number
-  createTime:string
-  updateTime:string
-  roleName:string
-  remark:string | null
+  id: number
+  createTime: string
+  updateTime: string
+  roleName: string
+  remark: string | null
 }
-export interface ResponseRoleData extends ResponseData{
+export interface ResponseRoleData extends ResponseData {
   data: {
-    records:record,
-    total: number,
-    size: number,
-    current: number,
-    orders: string[],
-    optimizeCountSql: boolean,
-    hitCount: boolean,
-    countId?: boolean,
-    maxLimit?: boolean,
-    searchCount: boolean,
+    records: record
+    total: number
+    size: number
+    current: number
+    orders: string[]
+    optimizeCountSql: boolean
+    hitCount: boolean
+    countId?: boolean
+    maxLimit?: boolean
+    searchCount: boolean
     pages: number
   }
 }
-export interface SetRoleResponse extends ResponseData{
-  data:null|string
+export interface SetRoleResponse extends ResponseData {
+  data: null | string
 }
