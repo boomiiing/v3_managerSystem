@@ -36,7 +36,7 @@
                 size="small"
                 icon="User"
                 type="primary"
-                @click="setRole(scope.row)"
+                @click="setRole(scope.row.id)"
               >
                 分配权限
               </el-button>
@@ -74,6 +74,29 @@
         />
       </el-row>
     </el-card>
+    <el-drawer
+      v-model="setRoleFlag"
+      title="分配权限"
+      class="demo-drawer"
+    >
+      <div class="demo-drawer__content">
+        <el-tree
+          style="max-width: 500px"
+          :data="treeData"
+          show-checkbox
+          node-key="id"
+          :props="defaultProps"
+          v-loading="treeLoading"
+          :default-checked-keys='checkedNode'
+        />
+      </div>
+      <template #footer>
+        <div style="flex: auto">
+          <el-button @click="setRoleFlag = false">取消</el-button>
+          <el-button type="primary" @click="submitSetRole()">确认</el-button>
+        </div>
+      </template>
+    </el-drawer>
   </div>
 </template>
 <script setup lang="ts">
@@ -83,9 +106,15 @@ import {
   reqSetNewRole,
   reqAlterRole,
   reqDeleteRole,
+  reqSetPermission,
+  reqGetRolePermission
 } from '@/api/acl/role/index'
-import { ResponseRoleData, record } from '@/api/acl/role/type'
+import { ResponseRoleData, record,Children } from '@/api/acl/role/type'
 import { ElMessage, ElMessageBox } from 'element-plus'
+const defaultProps = {
+  children: 'children',
+  label: 'name',
+}
 let keyword = ref('')
 let tableData = ref<record>([])
 let pageNum = ref(1)
@@ -123,7 +152,33 @@ const alterRole = async (data: record) => {
     }
   }
 }
-const setRole = (data: record) => {}
+let setRoleFlag = ref(false)
+let treeLoading = ref(false)
+let checkedNode = ref([])
+let treeData = reactive<Children[]>([])
+const setRole = async(id:number) => {
+  setRoleFlag.value = true
+  treeLoading.value = true
+  const result = await reqGetRolePermission(id)
+  if(result.code==200){
+    treeData = result.data
+    getCheckedNode(treeData)
+    treeLoading.value = false
+  }
+    treeLoading.value = false
+}
+const getCheckedNode = (data:Children) => {
+  data.forEach(ele =>{
+    if(ele.level === 4){
+      checkedNode.value.push(ele.id)
+    }else if(ele.children){
+      getCheckedNode(ele.children)
+    }
+  })
+}
+const submitSetRole = () => {
+
+}
 const deleteRole = async (id: number) => {
   try {
     const confirmed = await ElMessageBox.confirm(

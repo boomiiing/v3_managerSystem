@@ -28,3 +28,20 @@ export interface ResponseRoleData extends ResponseData {
 export interface SetRoleResponse extends ResponseData {
   data: null | string
 }
+export type Children = {
+  id: number
+  createTime: string
+  updateTime: string
+  pid: number
+  name: string
+  code: null|string
+  toCode: null|string
+  type: number
+  select?: boolean
+  status: null|string
+  level: number
+  children?:Children[]
+}
+export interface TreeResponseData extends ResponseData {
+  data:Children[]
+}
