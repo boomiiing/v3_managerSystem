@@ -34,14 +34,14 @@ export type Children = {
   updateTime: string
   pid: number
   name: string
-  code: null|string
-  toCode: null|string
+  code: null | string
+  toCode: null | string
   type: number
   select?: boolean
-  status: null|string
+  status: null | string
   level: number
-  children?:Children[]
+  children?: Children[]
 }
 export interface TreeResponseData extends ResponseData {
-  data:Children[]
+  data: Children[]
 }

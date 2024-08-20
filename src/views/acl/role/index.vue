@@ -74,11 +74,7 @@
         />
       </el-row>
     </el-card>
-    <el-drawer
-      v-model="setRoleFlag"
-      title="分配权限"
-      class="demo-drawer"
-    >
+    <el-drawer v-model="setRoleFlag" title="分配权限" class="demo-drawer">
       <div class="demo-drawer__content">
         <el-tree
           style="max-width: 500px"
@@ -87,7 +83,7 @@
           node-key="id"
           :props="defaultProps"
           v-loading="treeLoading"
-          :default-checked-keys='checkedNode'
+          :default-checked-keys="checkedNode"
         />
       </div>
       <template #footer>
@@ -107,9 +103,9 @@ import {
   reqAlterRole,
   reqDeleteRole,
   reqSetPermission,
-  reqGetRolePermission
+  reqGetRolePermission,
 } from '@/api/acl/role/index'
-import { ResponseRoleData, record,Children } from '@/api/acl/role/type'
+import { ResponseRoleData, record, Children } from '@/api/acl/role/type'
 import { ElMessage, ElMessageBox } from 'element-plus'
 const defaultProps = {
   children: 'children',
@@ -156,29 +152,27 @@ let setRoleFlag = ref(false)
 let treeLoading = ref(false)
 let checkedNode = ref([])
 let treeData = reactive<Children[]>([])
-const setRole = async(id:number) => {
+const setRole = async (id: number) => {
   setRoleFlag.value = true
   treeLoading.value = true
   const result = await reqGetRolePermission(id)
-  if(result.code==200){
+  if (result.code == 200) {
     treeData = result.data
     getCheckedNode(treeData)
     treeLoading.value = false
   }
-    treeLoading.value = false
+  treeLoading.value = false
 }
-const getCheckedNode = (data:Children) => {
-  data.forEach(ele =>{
-    if(ele.level === 4){
+const getCheckedNode = (data: Children) => {
+  data.forEach((ele) => {
+    if (ele.level === 4) {
       checkedNode.value.push(ele.id)
-    }else if(ele.children){
+    } else if (ele.children) {
       getCheckedNode(ele.children)
     }
   })
 }
-const submitSetRole = () => {
-
-}
+const submitSetRole = () => {}
 const deleteRole = async (id: number) => {
   try {
     const confirmed = await ElMessageBox.confirm(
