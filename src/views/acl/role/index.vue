@@ -85,9 +85,9 @@
           :props="defaultProps"
           v-loading="treeLoading"
           ref="roleTree"
-          :default-checked-keys = "defaultChecked"
+          :default-checked-keys="defaultChecked"
           default-expand-all
-          :current-node-key = 'currentChecked'
+          :current-node-key="currentChecked"
         />
       </div>
       <template #footer>
@@ -108,7 +108,7 @@ import {
   reqDeleteRole,
   reqSetPermission,
   reqGetRolePermission,
-  reqAssignPermission
+  reqAssignPermission,
 } from '@/api/acl/role/index'
 import { ResponseRoleData, record, Children } from '@/api/acl/role/type'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -166,7 +166,7 @@ const setRole = async (id: number) => {
   roleId.value = id
   const result = await reqGetRolePermission(id)
   if (result.code == 200) {
-    treeData = result.data 
+    treeData = result.data
     defaultChecked.value = []
     getCheckedNode(treeData)
     treeLoading.value = false
@@ -175,25 +175,25 @@ const setRole = async (id: number) => {
 }
 const getCheckedNode = (data: Children[]) => {
   data.forEach((ele) => {
-     if ((ele.children.length==0)&&ele.select) {
+    if (ele.children.length == 0 && ele.select) {
       defaultChecked.value.push(ele.id)
     } else if (ele.children) {
       getCheckedNode(ele.children)
     }
   })
 }
-const submitSetRole = async() => {
+const submitSetRole = async () => {
   let arr1 = roleTree.value.getCheckedKeys()
   let arr2 = roleTree.value.getHalfCheckedKeys()
   let permissionId = arr1.concat(arr2)
-  const result = await reqAssignPermission(roleId.value,permissionId)
-  if(result.code == 200){
+  const result = await reqAssignPermission(roleId.value, permissionId)
+  if (result.code == 200) {
     setRoleFlag.value = false
     getAllRole(pageNum.value)
     ElMessage({
-          message: '角色权限修改成功！',
-          type: 'success',
-        })
+      message: '角色权限修改成功！',
+      type: 'success',
+    })
   }
 }
 const deleteRole = async (id: number) => {

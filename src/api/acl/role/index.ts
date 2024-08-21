@@ -11,7 +11,7 @@ enum API {
   DELETEROLE_URL = '/admin/acl/role/remove/',
   SETPERMISSION_URL = '/admin/acl/permission',
   GETROLEPERMISSION_URL = '/admin/acl/permission/toAssign/',
-  ASSIGNPERMISSION_URL = '/admin/acl/permission/doAssign/?'
+  ASSIGNPERMISSION_URL = '/admin/acl/permission/doAssign/?',
 }
 export const reqGetAllRole = (page: number, limit: number, roleName?: string) =>
   request.get<any, ResponseRoleData>(
@@ -27,5 +27,7 @@ export const reqSetPermission = () =>
   request.get<any, TreeResponseData>(API.SETPERMISSION_URL)
 export const reqGetRolePermission = (id: number) =>
   request.get<any, TreeResponseData>(API.GETROLEPERMISSION_URL + id)
-export const reqAssignPermission = (roleId:number,permissionId:[]) =>
-  request.post<any, SetRoleResponse>(API.ASSIGNPERMISSION_URL+`roleId=${roleId}&permissionId=${permissionId}` )
+export const reqAssignPermission = (roleId: number, permissionId: []) =>
+  request.post<any, SetRoleResponse>(
+    API.ASSIGNPERMISSION_URL + `roleId=${roleId}&permissionId=${permissionId}`,
+  )

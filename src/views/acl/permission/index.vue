@@ -74,7 +74,7 @@ import {
   reqGetPermission,
   reqSavePermission,
   reqEditPermission,
-  reqDeletePermission
+  reqDeletePermission,
 } from '@/api/acl/menu/index'
 import { Children, Query } from '@/api/acl/menu/type'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -106,14 +106,14 @@ const submitSave = async () => {
         message: '新增成功！',
         type: 'success',
       })
-    }else{
+    } else {
       dialogFormVisible.value = false
       ElMessage({
         message: '新增失败！',
         type: 'warning',
       })
     }
-  }else{
+  } else {
     const result = await reqEditPermission(menuForm.value)
     if (result.code == 200) {
       dialogFormVisible.value = false
@@ -122,7 +122,7 @@ const submitSave = async () => {
         message: '修改成功！',
         type: 'success',
       })
-    }else{
+    } else {
       dialogFormVisible.value = false
       ElMessage({
         message: '修改失败！',
@@ -136,24 +136,24 @@ const editMenu = (data: Children) => {
   isAdd.value = false
   menuForm.value.name = data.name
   menuForm.value.code = data.code as number
-  menuForm.value.id = data.id 
+  menuForm.value.id = data.id
 }
 const deleteMenu = async (data: Children) => {
   const result = await reqDeletePermission(data.id)
-    if (result.code == 200) {
-      dialogFormVisible.value = false
-      gettPermission()
-      ElMessage({
-        message: '删除成功！',
-        type: 'success',
-      })
-    }else{
-      dialogFormVisible.value = false
-      ElMessage({
-        message: '删除失败！',
-        type: 'warning',
-      })
-    }
+  if (result.code == 200) {
+    dialogFormVisible.value = false
+    gettPermission()
+    ElMessage({
+      message: '删除成功！',
+      type: 'success',
+    })
+  } else {
+    dialogFormVisible.value = false
+    ElMessage({
+      message: '删除失败！',
+      type: 'warning',
+    })
+  }
 }
 const onClose = () => {
   menuForm.value = {
