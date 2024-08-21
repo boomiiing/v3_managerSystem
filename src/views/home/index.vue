@@ -39,8 +39,8 @@ const userStore = useUserStore()
     display: flex;
     align-items: center;
   }
-  .mainBox{
-    display:flex;
+  .mainBox {
+    display: flex;
     justify-content: center;
   }
 }
