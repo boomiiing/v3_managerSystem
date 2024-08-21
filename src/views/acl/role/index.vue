@@ -77,13 +77,17 @@
     <el-drawer v-model="setRoleFlag" title="分配权限" class="demo-drawer">
       <div class="demo-drawer__content">
         <el-tree
+          v-if="setRoleFlag"
           style="max-width: 500px"
           :data="treeData"
           show-checkbox
           node-key="id"
           :props="defaultProps"
           v-loading="treeLoading"
-          :default-checked-keys="checkedNode"
+          ref="roleTree"
+          :default-checked-keys = "defaultChecked"
+          default-expand-all
+          :current-node-key = 'currentChecked'
         />
       </div>
       <template #footer>
@@ -104,6 +108,7 @@ import {
   reqDeleteRole,
   reqSetPermission,
   reqGetRolePermission,
+  reqAssignPermission
 } from '@/api/acl/role/index'
 import { ResponseRoleData, record, Children } from '@/api/acl/role/type'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -150,29 +155,47 @@ const alterRole = async (data: record) => {
 }
 let setRoleFlag = ref(false)
 let treeLoading = ref(false)
-let checkedNode = ref([])
+let defaultChecked = ref<number[]>([])
+let currentChecked = ref<number[]>([])
+let roleTree = ref()
 let treeData = reactive<Children[]>([])
+let roleId = ref()
 const setRole = async (id: number) => {
   setRoleFlag.value = true
   treeLoading.value = true
+  roleId.value = id
   const result = await reqGetRolePermission(id)
   if (result.code == 200) {
-    treeData = result.data
+    treeData = result.data 
+    defaultChecked.value = []
     getCheckedNode(treeData)
     treeLoading.value = false
   }
   treeLoading.value = false
 }
-const getCheckedNode = (data: Children) => {
+const getCheckedNode = (data: Children[]) => {
   data.forEach((ele) => {
-    if (ele.level === 4) {
-      checkedNode.value.push(ele.id)
+     if ((ele.children.length==0)&&ele.select) {
+      defaultChecked.value.push(ele.id)
     } else if (ele.children) {
       getCheckedNode(ele.children)
     }
   })
 }
-const submitSetRole = () => {}
+const submitSetRole = async() => {
+  let arr1 = roleTree.value.getCheckedKeys()
+  let arr2 = roleTree.value.getHalfCheckedKeys()
+  let permissionId = arr1.concat(arr2)
+  const result = await reqAssignPermission(roleId.value,permissionId)
+  if(result.code == 200){
+    setRoleFlag.value = false
+    getAllRole(pageNum.value)
+    ElMessage({
+          message: '角色权限修改成功！',
+          type: 'success',
+        })
+  }
+}
 const deleteRole = async (id: number) => {
   try {
     const confirmed = await ElMessageBox.confirm(

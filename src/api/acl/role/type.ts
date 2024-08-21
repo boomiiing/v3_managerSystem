@@ -40,7 +40,7 @@ export type Children = {
   select?: boolean
   status: null | string
   level: number
-  children?: Children[]
+  children: Children[]
 }
 export interface TreeResponseData extends ResponseData {
   data: Children[]
