@@ -18,7 +18,9 @@
           <div style="font-size: 16px">这是一个管理系统</div>
         </div>
       </el-row>
-      <el-row style="height: 80%"></el-row>
+      <el-row style="height: 80%" class="mainBox">
+        <svg-icon name="welcome" height="100%" width="50%"></svg-icon>
+      </el-row>
     </el-card>
   </div>
 </template>
@@ -36,6 +38,10 @@ const userStore = useUserStore()
   .title {
     display: flex;
     align-items: center;
+  }
+  .mainBox{
+    display:flex;
+    justify-content: center;
   }
 }
 ::v-deep .el-card__body {
