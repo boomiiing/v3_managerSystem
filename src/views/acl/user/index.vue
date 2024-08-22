@@ -435,7 +435,6 @@ onMounted(() => {
 .main_body {
   margin: 10px 0;
   height: calc(100% - 100px);
-  background: #fff;
 }
 ::v-deep .el-form--inline .el-form-item {
   margin: 0;

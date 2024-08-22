@@ -40,13 +40,12 @@ import Tabbar from '@/layout/tabbar/index.vue'
 let userStore = useUserStore()
 const layOutSettingStore = useLayOutSettingStore()
 let $route = useRoute()
-console.log($route.path)
 </script>
 <style scoped lang="scss">
 .layout_container {
   width: 100%;
   height: 100vh;
-  background-color: #ccc;
+  // background-color: #ccc;
   .layout_menu {
     height: 100%;
     width: $base_menu_width;
@@ -77,7 +76,6 @@ console.log($route.path)
     top: 0;
     height: $base_tabbar_height;
     width: calc(100% - $base_menu_width);
-    background-color: #fff;
     transition: all 0.5s;
     &.flod {
       width: calc(100% - $base_menu_min_width);

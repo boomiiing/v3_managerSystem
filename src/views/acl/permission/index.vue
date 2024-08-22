@@ -167,7 +167,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .main_body {
   height: 100%;
-  background: #fff;
 }
 ::v-deep .el-card__body {
   height: calc(100% - 40px);

@@ -34,7 +34,6 @@ const userStore = useUserStore()
 <style scoped lang="scss">
 .main_body {
   height: 100%;
-  background: #fff;
   .title {
     display: flex;
     align-items: center;
