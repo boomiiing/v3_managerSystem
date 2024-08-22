@@ -11,7 +11,15 @@
           <el-color-picker v-model="color" />
         </el-form-item>
         <el-form-item label="暗黑模式">
-          <el-switch v-model="switchTheme" inline-prompt active-icon="moon" inactive-icon="sunny" active-color="#13ce66" inactive-color="#ff4949" @change="changeTheme"></el-switch>
+          <el-switch
+            v-model="switchTheme"
+            inline-prompt
+            active-icon="moon"
+            inactive-icon="sunny"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            @change="changeTheme"
+          ></el-switch>
         </el-form-item>
       </el-form>
     </el-popover>
@@ -59,10 +67,9 @@ async function userLogout() {
 }
 let color = ref()
 let switchTheme = ref(false)
-const changeTheme = () =>{
-    let html = document.documentElement
-    switchTheme.value? html.className =  'dark':html.className =  ''
-  
+const changeTheme = () => {
+  let html = document.documentElement
+  switchTheme.value ? (html.className = 'dark') : (html.className = '')
 }
 </script>
 <style scoped></style>
