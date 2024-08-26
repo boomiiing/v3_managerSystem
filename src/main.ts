@@ -13,8 +13,8 @@ import routers from '@/router'
 import pinia from './store'
 import './permission'
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import '@/style/dark/css-vars.css'
-const app = createApp(App)
+import '@/style/element/index.scss'
+ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

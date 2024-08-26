@@ -2,13 +2,13 @@
   <div>
     <el-button size="small" icon="Refresh" circle @click="updateRefsh" />
     <el-button size="small" icon="FullScreen" circle @click="fullScreen" />
-    <el-popover placement="bottom" title="Title" :width="300" trigger="hover">
+    <el-popover  placement="bottom" title="Title" :width="300" trigger="hover">
       <template #reference>
         <el-button size="small" icon="Setting" circle />
       </template>
       <el-form ref="form" label-width="80px">
         <el-form-item label="主题颜色">
-          <el-color-picker v-model="color" />
+          <el-color-picker :teleported = 'false' v-model="color" @change = 'setColor' />
         </el-form-item>
         <el-form-item label="暗黑模式">
           <el-switch
@@ -70,6 +70,10 @@ let switchTheme = ref(false)
 const changeTheme = () => {
   let html = document.documentElement
   switchTheme.value ? (html.className = 'dark') : (html.className = '')
+}
+const setColor = () => {
+  let html = document.documentElement
+  html.style.setProperty('--el-color-primary',color.value)
 }
 </script>
 <style scoped></style>
