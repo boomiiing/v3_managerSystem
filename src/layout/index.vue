@@ -45,7 +45,7 @@ let $route = useRoute()
 .layout_container {
   width: 100%;
   height: 100vh;
-    background-color: var(--el-bg-color-page);
+  background-color: var(--el-bg-color-page);
   // background-color: #ccc;
   .layout_menu {
     height: 100%;

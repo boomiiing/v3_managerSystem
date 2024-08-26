@@ -436,10 +436,10 @@ onMounted(() => {
   margin: 10px 0;
   height: calc(100% - 100px);
 }
-::v-deep( .el-form--inline .el-form-item ){
+::v-deep(.el-form--inline .el-form-item) {
   margin: 0;
 }
-::v-deep( .el-card__body ){
+::v-deep(.el-card__body) {
   height: calc(100% - 40px);
 }
 </style>

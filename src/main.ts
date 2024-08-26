@@ -14,7 +14,7 @@ import pinia from './store'
 import './permission'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/style/element/index.scss'
- const app = createApp(App)
+const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

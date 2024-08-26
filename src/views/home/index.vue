@@ -43,7 +43,7 @@ const userStore = useUserStore()
     justify-content: center;
   }
 }
-::v-deep(.el-card__body ){
+::v-deep(.el-card__body) {
   height: calc(100% - 40px);
 }
 </style>
