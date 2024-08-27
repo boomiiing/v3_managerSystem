@@ -9,9 +9,8 @@
       </h5>
       <el-scrollbar class="scroll_bar">
         <el-menu
-          background-color="#545c64"
-          style="width: 100%; border: none"
-          text-color="#fff"
+          background-color="var(--menu-color)"
+          style="width: 100%; border: none;"
           :router="true"
           :default-active="$route.path"
           :collapse="layOutSettingStore.fold"
@@ -60,11 +59,18 @@ let $route = useRoute()
       justify-content: space-evenly;
       p {
         font-size: 24px;
-        color: #fff;
+        color: var(--title-text-color);
       }
     }
     .scroll_bar {
       height: calc(100% - 50px);
+      box-shadow: 0 5px 5px  #ccc;
+      ::v-deep(.el-menu-item:hover) {
+        background: var(--menu-hover-bg-color)!important;
+      }
+      ::v-deep(.el-sub-menu__title:hover) {
+        background: var(--menu-hover-bg-color) !important;
+      }
     }
     &.flod {
       width: $base_menu_min_width;
@@ -76,6 +82,7 @@ let $route = useRoute()
     right: 0;
     top: 0;
     height: $base_tabbar_height;
+    background-color: var(--title-bg-color);
     width: calc(100% - $base_menu_width);
     transition: all 0.5s;
     &.flod {

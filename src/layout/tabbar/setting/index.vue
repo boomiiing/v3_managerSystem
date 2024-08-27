@@ -14,16 +14,20 @@
             @change="setColor"
           />
         </el-form-item>
-        <el-form-item label="暗黑模式">
-          <el-switch
+        <el-form-item label="主题切换">
+          <el-select
+          :teleported="false"
             v-model="switchTheme"
-            inline-prompt
-            active-icon="moon"
-            inactive-icon="sunny"
-            active-color="#13ce66"
-            inactive-color="#ff4949"
+            placeholder="主题切换"
             @change="changeTheme"
-          ></el-switch>
+          >
+            <el-option
+              v-for="item in themeOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
         </el-form-item>
       </el-form>
     </el-popover>
@@ -47,10 +51,12 @@
   </div>
 </template>
 <script setup lang="ts" name="Setting">
-import { ref } from 'vue'
+import { ref , onMounted} from 'vue'
 import { useLayOutSettingStore } from '@/store/modules/setting'
 import useUserStore from '@/store/modules/user'
+import {useThemeStore} from '@/store/modules/theme'
 const userStore = useUserStore()
+const themeStore = useThemeStore()
 import { useRouter } from 'vue-router'
 let layOutSettingStore = useLayOutSettingStore()
 let $router = useRouter()
@@ -70,14 +76,40 @@ async function userLogout() {
   $router.replace({ path: '/login' })
 }
 let color = ref()
-let switchTheme = ref(false)
+let switchTheme = ref<string>('0')
+const themeOptions = [
+  {
+    label:'经典',
+    value:'0'
+  },
+  {
+    label:'黑夜',
+    value:'1'
+  },
+  {
+    label:'新颖',
+    value:'2'
+  }
+]
 const changeTheme = () => {
   let html = document.documentElement
-  switchTheme.value ? (html.className = 'dark') : (html.className = '')
+  if(switchTheme.value=='0'){
+    html.className = ''
+  }else if(switchTheme.value=='1'){
+    html.className = 'dark'
+  }else if(switchTheme.value=='2'){
+    html.className = 'likeTheme'
+  }
+  themeStore.setTheme(switchTheme.value)
 }
 const setColor = () => {
   let html = document.documentElement
   html.style.setProperty('--el-color-primary', color.value)
 }
+onMounted(() => {
+  console.log(themeStore.currentTheme)
+  switchTheme.value = themeStore.currentTheme||'0'
+  changeTheme()
+})
 </script>
 <style scoped></style>

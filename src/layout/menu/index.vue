@@ -58,4 +58,6 @@
 <script setup lang="ts" name="Menu">
 defineProps(['menuList'])
 </script>
-<style scoped></style>
+<style scoped>
+
+</style>

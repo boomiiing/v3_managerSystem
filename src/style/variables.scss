@@ -3,6 +3,6 @@ $base_menu_width:260px;
 //左侧menu折叠宽度全局变量
 $base_menu_min_width:60px;
 //左侧menu背景颜色全局变量
-$base_menu_background:#545c64;
+$base_menu_background:var(--menu-color);
 //导航栏高度全局变量
 $base_tabbar_height:60px;

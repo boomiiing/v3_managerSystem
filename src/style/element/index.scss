@@ -1,6 +1,20 @@
 :root {
+  --menu-color:#545c64;
+  --el-menu-text-color: #fff;
+  --menu-hover-bg-color:#000;
+  --title-bg-color:#fff;
+  --title-text-color:#fff
+}
+html.dark {
+  --menu-color:#1d1e1f;
+  --title-bg-color:#1d1e1f;
+  --title-text-color:#fff;
 }
 html.likeTheme {
-  --el-color-primary: pink;
-  --el-bg-color-page: skyblue;
+  --el-bg-color-page: #fff;
+  --el-menu-text-color: #000;
+  --menu-hover-bg-color:#e5e9fa;
+  --title-text-color:#000;
+  --title-bg-color:#526ade;
+  --menu-color:#fff;
 }
