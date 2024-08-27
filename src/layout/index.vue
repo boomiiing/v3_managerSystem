@@ -10,7 +10,7 @@
       <el-scrollbar class="scroll_bar">
         <el-menu
           background-color="var(--menu-color)"
-          style="width: 100%; border: none;"
+          style="width: 100%; border: none"
           :router="true"
           :default-active="$route.path"
           :collapse="layOutSettingStore.fold"
@@ -64,9 +64,9 @@ let $route = useRoute()
     }
     .scroll_bar {
       height: calc(100% - 50px);
-      box-shadow: 0 5px 5px  #ccc;
+      box-shadow: 0 5px 5px #ccc;
       ::v-deep(.el-menu-item:hover) {
-        background: var(--menu-hover-bg-color)!important;
+        background: var(--menu-hover-bg-color) !important;
       }
       ::v-deep(.el-sub-menu__title:hover) {
         background: var(--menu-hover-bg-color) !important;

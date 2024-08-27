@@ -16,7 +16,7 @@
         </el-form-item>
         <el-form-item label="主题切换">
           <el-select
-          :teleported="false"
+            :teleported="false"
             v-model="switchTheme"
             placeholder="主题切换"
             @change="changeTheme"
@@ -51,10 +51,10 @@
   </div>
 </template>
 <script setup lang="ts" name="Setting">
-import { ref , onMounted} from 'vue'
+import { ref, onMounted } from 'vue'
 import { useLayOutSettingStore } from '@/store/modules/setting'
 import useUserStore from '@/store/modules/user'
-import {useThemeStore} from '@/store/modules/theme'
+import { useThemeStore } from '@/store/modules/theme'
 const userStore = useUserStore()
 const themeStore = useThemeStore()
 import { useRouter } from 'vue-router'
@@ -79,25 +79,25 @@ let color = ref()
 let switchTheme = ref<string>('0')
 const themeOptions = [
   {
-    label:'经典',
-    value:'0'
+    label: '经典',
+    value: '0',
   },
   {
-    label:'黑夜',
-    value:'1'
+    label: '黑夜',
+    value: '1',
   },
   {
-    label:'新颖',
-    value:'2'
-  }
+    label: '新颖',
+    value: '2',
+  },
 ]
 const changeTheme = () => {
   let html = document.documentElement
-  if(switchTheme.value=='0'){
+  if (switchTheme.value == '0') {
     html.className = ''
-  }else if(switchTheme.value=='1'){
+  } else if (switchTheme.value == '1') {
     html.className = 'dark'
-  }else if(switchTheme.value=='2'){
+  } else if (switchTheme.value == '2') {
     html.className = 'likeTheme'
   }
   themeStore.setTheme(switchTheme.value)
@@ -108,7 +108,7 @@ const setColor = () => {
 }
 onMounted(() => {
   console.log(themeStore.currentTheme)
-  switchTheme.value = themeStore.currentTheme||'0'
+  switchTheme.value = themeStore.currentTheme || '0'
   changeTheme()
 })
 </script>
