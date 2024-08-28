@@ -15,7 +15,8 @@ request.interceptors.request.use((config) => {
 request.interceptors.response.use(
   (response) => {
     console.log(response)
-    return response.data
+   
+    return response.data?response.data:response
   },
   (err) => {
     console.log(err)
