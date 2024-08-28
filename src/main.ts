@@ -14,10 +14,10 @@ import pinia from './store'
 import './permission'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/style/element/index.scss'
-import {registerEcharts} from "@/plugins/echarts"
-import '@/assets/css/main.scss';
-import '@/assets/css/tailwind.css';
-import { mockXHR } from "../mock/index";
+import { registerEcharts } from '@/plugins/echarts'
+import '@/assets/css/main.scss'
+import '@/assets/css/tailwind.css'
+import { mockXHR } from '../mock/index'
 mockXHR()
 const app = createApp(App)
 registerEcharts(app)

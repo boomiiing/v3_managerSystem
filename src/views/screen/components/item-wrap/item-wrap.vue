@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import BorderBox13 from "../datav/border-box-13";
+import BorderBox13 from '../datav/border-box-13'
 const props = withDefaults(
   defineProps<{
     // 标题
-    title: number | string;
+    title: number | string
   }>(),
   {
-    title: "",
-  }
-);
+    title: '',
+  },
+)
 </script>
 
 <template>
   <BorderBox13>
     <div class="item_title" v-if="title !== ''">
       <div class="zuo"></div>
-      <span class="title-inner"> &nbsp;&nbsp;{{ title }}&nbsp;&nbsp; </span>
+      <span class="title-inner">&nbsp;&nbsp;{{ title }}&nbsp;&nbsp;</span>
       <div class="you"></div>
     </div>
     <div
       :class="title !== '' ? 'item_title_content' : 'item_title_content_def'"
     >
-      <slot></slot></div
-  ></BorderBox13>
+      <slot></slot>
+    </div>
+  </BorderBox13>
 </template>
 
 <style scoped lang="scss">
@@ -45,7 +46,7 @@ $item_title_content-height: calc(100% - 38px);
   .you {
     width: 58px;
     height: 14px;
-    background-image: url("@/assets/img/titles/zuo.png");
+    background-image: url('@/assets/img/titles/zuo.png');
   }
 
   .you {
@@ -65,10 +66,10 @@ $item_title_content-height: calc(100% - 38px);
   }
 }
 
-:deep(.dv-border-box-content)  {
-    box-sizing: border-box;
-    padding: 6px 16px 0px;
-  }
+:deep(.dv-border-box-content) {
+  box-sizing: border-box;
+  padding: 6px 16px 0px;
+}
 
 .item_title_content {
   height: $item_title_content-height;

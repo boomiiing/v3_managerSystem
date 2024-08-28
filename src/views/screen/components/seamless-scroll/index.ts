@@ -1,2 +1,2 @@
-import SeamlessScroll from "./seamless-scroll.vue"
+import SeamlessScroll from './seamless-scroll.vue'
 export default SeamlessScroll

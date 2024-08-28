@@ -1,34 +1,35 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import { countDeviceNum } from "@/api/screen/index";
-import CountUp from "../count-up";
-import {ElMessage} from "element-plus"
+import { reactive, ref } from 'vue'
+import { countDeviceNum } from '@/api/screen/index'
+import CountUp from '../count-up'
+import { ElMessage } from 'element-plus'
 
-const duration = ref(2);
+const duration = ref(2)
 const state = reactive({
   alarmNum: 0,
   offlineNum: 0,
   onlineNum: 0,
   totalNum: 0,
-});
-
+})
 
 const getData = () => {
-  countDeviceNum().then((res) => {
-    console.log("左上--设备总览",res);
-    if (res.success) {
-      state.alarmNum = res.data.alarmNum;
-      state.offlineNum = res.data.offlineNum;
-      state.onlineNum = res.data.onlineNum;
-      state.totalNum = res.data.totalNum;
-    }else{
-      ElMessage.error(res.msg)
-    }
-  }).catch(err=>{
-    ElMessage.error(err)
-  });;
-};
-getData();
+  countDeviceNum()
+    .then((res) => {
+      console.log('左上--设备总览', res)
+      if (res.success) {
+        state.alarmNum = res.data.alarmNum
+        state.offlineNum = res.data.offlineNum
+        state.onlineNum = res.data.onlineNum
+        state.totalNum = res.data.totalNum
+      } else {
+        ElMessage.error(res.msg)
+      }
+    })
+    .catch((err) => {
+      ElMessage.error(err)
+    })
+}
+getData()
 </script>
 
 <template>
@@ -88,7 +89,7 @@ getData();
       position: relative;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         width: 100%;
         height: 100%;
@@ -103,25 +104,25 @@ getData();
 
     .allnum {
       &::before {
-        background-image: url("@/assets/img/left_top_lan.png");
+        background-image: url('@/assets/img/left_top_lan.png');
       }
     }
 
     .online {
       &::before {
-        background-image: url("@/assets/img/left_top_lv.png");
+        background-image: url('@/assets/img/left_top_lv.png');
       }
     }
 
     .offline {
       &::before {
-        background-image: url("@/assets/img/left_top_huang.png");
+        background-image: url('@/assets/img/left_top_huang.png');
       }
     }
 
     .laramnum {
       &::before {
-        background-image: url("@/assets/img/left_top_hong.png");
+        background-image: url('@/assets/img/left_top_hong.png');
       }
     }
   }

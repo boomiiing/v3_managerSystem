@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import ScaleScreen from "./components/scale-screen";
-import Headers from "./components/header.vue";
-import Setting from "./components/setting.vue";
-import { useSettingStore } from "@/store/modules/screenSetting";
-import { storeToRefs } from "pinia";
-import MessageContent from "./components/Plugins/MessageContent";
+import { ref } from 'vue'
+import ScaleScreen from './components/scale-screen'
+import Headers from './components/header.vue'
+import Setting from './components/setting.vue'
+import { useSettingStore } from '@/store/modules/screenSetting'
+import { storeToRefs } from 'pinia'
+import MessageContent from './components/Plugins/MessageContent'
 import MainBox from '@/views/screen/components/allBox/index.vue'
-const settingStore = useSettingStore();
-const { isScale } = storeToRefs(settingStore);
-const wrapperStyle = {};
+const settingStore = useSettingStore()
+const { isScale } = storeToRefs(settingStore)
+const wrapperStyle = {}
 </script>
 
 <template>
@@ -39,7 +39,7 @@ const wrapperStyle = {};
   height: 100%;
   padding: 16px 16px 16px 16px;
   box-sizing: border-box;
-  background-image: url("@/assets/img/pageBg.png");
+  background-image: url('@/assets/img/pageBg.png');
   background-size: cover;
   background-position: center center;
 }

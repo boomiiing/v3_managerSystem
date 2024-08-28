@@ -1,7 +1,7 @@
 <script lang="ts">
 export type { CountUp as ICountUp, CountUpOptions } from 'countup.js'
 export default {
-  name: 'CountUp'
+  name: 'CountUp',
 }
 </script>
 <script setup lang="ts">
@@ -32,8 +32,8 @@ const props = withDefaults(
     autoplay: true,
     loop: false,
     delay: 0,
-    options: undefined
-  }
+    options: undefined,
+  },
 )
 const emits = defineEmits<{
   // countup init complete
@@ -53,7 +53,7 @@ const initCountUp = () => {
   countUp.value = new CountUp(elRef.value, endVal, {
     startVal,
     duration,
-    ...props.options
+    ...props.options,
   })
   if (countUp.value.error) {
     console.error(countUp.value.error)
@@ -73,7 +73,7 @@ watch(
     if (props.autoplay) {
       countUp.value?.update(value)
     }
-  }
+  },
 )
 
 // loop animation
@@ -133,14 +133,14 @@ const restart = () => {
 
 defineExpose({
   init: initCountUp,
-  restart
+  restart,
 })
 </script>
 
 <template>
   <div class="countup-wrap">
     <slot name="prefix"></slot>
-    <span ref="elRef"> </span>
+    <span ref="elRef"></span>
     <slot name="suffix"></slot>
   </div>
 </template>

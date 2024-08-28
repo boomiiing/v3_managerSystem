@@ -1,41 +1,40 @@
 <script setup lang="ts">
-import { useSettingStore } from "@/store/modules/screenSetting";
-import { ref } from "vue";
-import {storeToRefs} from "pinia"
-const isScaleRadio = ref(false);
-const leftBottomRadio=ref(true)
-const rightBottomRadio=ref(true)
-const settingStore = useSettingStore();
-const {indexConfig}=storeToRefs(settingStore)
+import { useSettingStore } from '@/store/modules/screenSetting'
+import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
+const isScaleRadio = ref(false)
+const leftBottomRadio = ref(true)
+const rightBottomRadio = ref(true)
+const settingStore = useSettingStore()
+const { indexConfig } = storeToRefs(settingStore)
 
 const init = () => {
-  settingStore.initSetting();
-  isScaleRadio.value = settingStore.isScale;
+  settingStore.initSetting()
+  isScaleRadio.value = settingStore.isScale
 
-  leftBottomRadio.value=indexConfig.value.leftBottomSwiper
-  rightBottomRadio.value=indexConfig.value.rightBottomSwiper
-
-};
-init();
-const handleClose = () => {};
+  leftBottomRadio.value = indexConfig.value.leftBottomSwiper
+  rightBottomRadio.value = indexConfig.value.rightBottomSwiper
+}
+init()
+const handleClose = () => {}
 
 const cancelClick = () => {
-  settingStore.setSettingShow(false);
-};
+  settingStore.setSettingShow(false)
+}
 
-const confirmClick = () => {};
+const confirmClick = () => {}
 const isScaleChange = (flag: boolean) => {
-  settingStore.setIsScale(flag);
-};
+  settingStore.setIsScale(flag)
+}
 const radiochange = (blag: boolean) => {
-  settingStore.setIsScale(blag);
+  settingStore.setIsScale(blag)
   // this.$store.commit('setting/updateSwiper', { val, type })
-};
-const indexRadioChange=(flag: boolean)=>{
+}
+const indexRadioChange = (flag: boolean) => {
   settingStore.setIndexConfig({
-    leftBottomSwiper: leftBottomRadio.value,//左轮播
-    rightBottomSwiper:rightBottomRadio.value,//右下轮播
-  });
+    leftBottomSwiper: leftBottomRadio.value, //左轮播
+    rightBottomSwiper: rightBottomRadio.value, //右下轮播
+  })
 }
 </script>
 
@@ -48,12 +47,15 @@ const indexRadioChange=(flag: boolean)=>{
       <div class="left_shu">全局设置</div>
       <div class="setting_item">
         <span class="setting_label">
-          是否进行自动适配<span class="setting_label_tip"
-            >(默认分辨率1920*1080)</span
-          >:
+          是否进行自动适配
+          <span class="setting_label_tip">(默认分辨率1920*1080)</span>
+          :
         </span>
         <div class="setting_content">
-          <el-radio-group v-model="isScaleRadio" @change="(flag)=>isScaleChange(flag as boolean)">
+          <el-radio-group
+            v-model="isScaleRadio"
+            @change="(flag) => isScaleChange(flag as boolean)"
+          >
             <el-radio :label="true">是</el-radio>
             <el-radio :label="false">否</el-radio>
           </el-radio-group>
@@ -62,12 +64,13 @@ const indexRadioChange=(flag: boolean)=>{
       <div class="left_shu">实时监测</div>
       <div class="setting_item">
         <span class="setting_label">
-          设备提醒自动轮询: <span class="setting_label_tip"></span>
+          设备提醒自动轮询:
+          <span class="setting_label_tip"></span>
         </span>
         <div class="setting_content">
           <el-radio-group
             v-model="leftBottomRadio"
-            @change="(flag)=>indexRadioChange(flag as boolean)"
+            @change="(flag) => indexRadioChange(flag as boolean)"
           >
             <el-radio :label="true">是</el-radio>
             <el-radio :label="false">否</el-radio>
@@ -75,11 +78,11 @@ const indexRadioChange=(flag: boolean)=>{
         </div>
       </div>
       <div class="setting_item">
-        <span class="setting_label"> 实时预警轮播: </span>
+        <span class="setting_label">实时预警轮播:</span>
         <div class="setting_content">
           <el-radio-group
             v-model="rightBottomRadio"
-            @change="(flag)=>indexRadioChange(flag as boolean)"
+            @change="(flag) => indexRadioChange(flag as boolean)"
           >
             <el-radio :label="true">是</el-radio>
             <el-radio :label="false">否</el-radio>
@@ -113,7 +116,7 @@ const indexRadioChange=(flag: boolean)=>{
   line-height: 1;
   &::before {
     display: block;
-    content: " ";
+    content: ' ';
     height: 16px;
     width: 4px;
     border-radius: 2px;

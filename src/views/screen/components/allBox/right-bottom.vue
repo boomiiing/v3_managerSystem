@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { rightBottom } from "@/api/screen/index";
-import SeamlessScroll from "../seamless-scroll";
-import { computed, onMounted, reactive } from "vue";
-import { useSettingStore } from "@/store/modules/screenSetting";
-import { storeToRefs } from "pinia";
-import EmptyCom from "../empty-com";
-import { ElMessage } from "element-plus";
+import { rightBottom } from '@/api/screen/index'
+import SeamlessScroll from '../seamless-scroll'
+import { computed, onMounted, reactive } from 'vue'
+import { useSettingStore } from '@/store/modules/screenSetting'
+import { storeToRefs } from 'pinia'
+import EmptyCom from '../empty-com'
+import { ElMessage } from 'element-plus'
 
-const settingStore = useSettingStore();
-const { defaultOption, indexConfig } = storeToRefs(settingStore);
+const settingStore = useSettingStore()
+const { defaultOption, indexConfig } = storeToRefs(settingStore)
 const state = reactive<any>({
   list: [],
   defaultOption: {
@@ -18,47 +18,50 @@ const state = reactive<any>({
     // step:3
   },
   scroll: true,
-});
+})
 
 const getData = () => {
   rightBottom({ limitNum: 20 })
     .then((res) => {
-      console.log("右下", res);
+      console.log('右下', res)
       if (res.success) {
-        state.list = res.data.list;
+        state.list = res.data.list
       } else {
         ElMessage({
           message: res.msg,
-          type: "warning",
-        });
+          type: 'warning',
+        })
       }
     })
     .catch((err) => {
-      ElMessage.error(err);
-    });
-};
+      ElMessage.error(err)
+    })
+}
 
 const comName = computed(() => {
   if (indexConfig.value.rightBottomSwiper) {
-    return SeamlessScroll;
+    return SeamlessScroll
   } else {
-    return EmptyCom;
+    return EmptyCom
   }
-});
+})
 function montionFilter(val: any) {
   // console.log(val);
-  return val ? Number(val).toFixed(2) : "--";
+  return val ? Number(val).toFixed(2) : '--'
 }
 const handleAddress = (item: any) => {
-  return `${item.provinceName}/${item.cityName}/${item.countyName}`;
-};
+  return `${item.provinceName}/${item.cityName}/${item.countyName}`
+}
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 </script>
 
 <template>
-  <div class="right_bottom_wrap beautify-scroll-def" :class="{ 'overflow-y-auto': !indexConfig.rightBottomSwiper }">
+  <div
+    class="right_bottom_wrap beautify-scroll-def"
+    :class="{ 'overflow-y-auto': !indexConfig.rightBottomSwiper }"
+  >
     <component
       :is="comName"
       :list="state.list"
@@ -78,36 +81,47 @@ onMounted(() => {
             <div class="flex">
               <div class="info">
                 <span class="labels">设备ID：</span>
-                <span class="text-content zhuyao"> {{ item.gatewayno }}</span>
+                <span class="text-content zhuyao">{{ item.gatewayno }}</span>
               </div>
               <div class="info">
                 <span class="labels">型号：</span>
-                <span class="text-content"> {{ item.terminalno }}</span>
+                <span class="text-content">{{ item.terminalno }}</span>
               </div>
               <div class="info">
                 <span class="labels">告警值：</span>
-                <span class="text-content warning"> {{ montionFilter(item.alertvalue) }}</span>
+                <span class="text-content warning">
+                  {{ montionFilter(item.alertvalue) }}
+                </span>
               </div>
             </div>
 
             <div class="flex">
               <div class="info">
-                <span class="labels shrink-0"> 地址：</span>
-                <span class="ciyao truncate" style="font-size: 12px; width: 220px" :title="handleAddress(item)">
-                  {{ handleAddress(item) }}</span
+                <span class="labels shrink-0">地址：</span>
+                <span
+                  class="ciyao truncate"
+                  style="font-size: 12px; width: 220px"
+                  :title="handleAddress(item)"
                 >
+                  {{ handleAddress(item) }}
+                </span>
               </div>
               <div class="info time shrink-0">
                 <span class="labels">时间：</span>
-                <span class="text-content" style="font-size: 12px"> {{ item.createtime }}</span>
+                <span class="text-content" style="font-size: 12px">
+                  {{ item.createtime }}
+                </span>
               </div>
             </div>
             <div class="flex">
               <div class="info">
                 <span class="labels">报警内容：</span>
-                <span class="text-content ciyao" :class="{ warning: item.alertdetail }">
-                  {{ item.alertdetail || "无" }}</span
+                <span
+                  class="text-content ciyao"
+                  :class="{ warning: item.alertdetail }"
                 >
+                  {{ item.alertdetail || '无' }}
+                </span>
               </div>
             </div>
           </div>
@@ -146,7 +160,7 @@ onMounted(() => {
         position: absolute;
         height: 2px;
         width: 104%;
-        background-image: url("@/assets/img/zuo_xuxian.png");
+        background-image: url('@/assets/img/zuo_xuxian.png');
         bottom: -12px;
         left: -2%;
         background-size: cover;

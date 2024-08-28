@@ -1,37 +1,41 @@
 <script setup lang="ts">
-import { ref, reactive } from "vue";
-import CapsuleChart from "../datav/capsule-chart";
-import { ranking } from "@/api/screen/index";
-import { ElMessage } from "element-plus";
+import { ref, reactive } from 'vue'
+import CapsuleChart from '../datav/capsule-chart'
+import { ranking } from '@/api/screen/index'
+import { ElMessage } from 'element-plus'
 
 const config = ref({
   showValue: true,
-  unit: "次",
-});
-const data = ref([]);
+  unit: '次',
+})
+const data = ref([])
 const getData = () => {
   ranking()
     .then((res) => {
-      console.log("右中--报警排名", res);
+      console.log('右中--报警排名', res)
       if (res.success) {
-        data.value = res.data;
+        data.value = res.data
       } else {
         ElMessage({
           message: res.msg,
-          type: "warning",
-        });
+          type: 'warning',
+        })
       }
     })
     .catch((err) => {
-      ElMessage.error(err);
-    });
-};
-getData();
+      ElMessage.error(err)
+    })
+}
+getData()
 </script>
 
 <template>
   <div class="right_bottom">
-    <CapsuleChart :config="config" style="width: 100%; height: 260px" :data="data" />
+    <CapsuleChart
+      :config="config"
+      style="width: 100%; height: 260px"
+      :data="data"
+    />
   </div>
 </template>
 

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { leftBottom } from "@/api/screen/index";
-import SeamlessScroll from "../seamless-scroll";
-import { computed, onMounted, reactive } from "vue";
-import { useSettingStore } from "@/store/modules/screenSetting";
-import { storeToRefs } from "pinia";
-import EmptyCom from "../empty-com";
-import { ElMessage } from "element-plus";
+import { leftBottom } from '@/api/screen/index'
+import SeamlessScroll from '../seamless-scroll'
+import { computed, onMounted, reactive } from 'vue'
+import { useSettingStore } from '@/store/modules/screenSetting'
+import { storeToRefs } from 'pinia'
+import EmptyCom from '../empty-com'
+import { ElMessage } from 'element-plus'
 
-const settingStore = useSettingStore();
-const { defaultOption, indexConfig } = storeToRefs(settingStore);
+const settingStore = useSettingStore()
+const { defaultOption, indexConfig } = storeToRefs(settingStore)
 const state = reactive<any>({
   list: [],
   defaultOption: {
@@ -17,49 +17,52 @@ const state = reactive<any>({
     limitScrollNum: 4,
   },
   scroll: true,
-});
+})
 
 const getData = () => {
-  leftBottom( { limitNum: 20 })
+  leftBottom({ limitNum: 20 })
     .then((res) => {
-      console.log("左下--设备提醒", res);
+      console.log('左下--设备提醒', res)
       if (res.success) {
-        state.list = res.data.list;
+        state.list = res.data.list
       } else {
         ElMessage({
           message: res.msg,
-          type: "warning",
-        });
+          type: 'warning',
+        })
       }
     })
     .catch((err) => {
-      ElMessage.error(err);
-    });
-};
+      ElMessage.error(err)
+    })
+}
 const addressHandle = (item: any) => {
-  let name = item.provinceName;
+  let name = item.provinceName
   if (item.cityName) {
-    name += "/" + item.cityName;
+    name += '/' + item.cityName
     if (item.countyName) {
-      name += "/" + item.countyName;
+      name += '/' + item.countyName
     }
   }
-  return name;
-};
+  return name
+}
 const comName = computed(() => {
   if (indexConfig.value.leftBottomSwiper) {
-    return SeamlessScroll;
+    return SeamlessScroll
   } else {
-    return EmptyCom;
+    return EmptyCom
   }
-});
+})
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 </script>
 
 <template>
-  <div class="left_boottom_wrap beautify-scroll-def" :class="{ 'overflow-y-auto': !indexConfig.leftBottomSwiper }">
+  <div
+    class="left_boottom_wrap beautify-scroll-def"
+    :class="{ 'overflow-y-auto': !indexConfig.leftBottomSwiper }"
+  >
     <component
       :is="comName"
       :list="state.list"
@@ -79,11 +82,15 @@ onMounted(() => {
             <div class="flex">
               <div class="info">
                 <span class="labels">设备ID：</span>
-                <span class="text-content zhuyao doudong wangguan"> {{ item.gatewayno }}</span>
+                <span class="text-content zhuyao doudong wangguan">
+                  {{ item.gatewayno }}
+                </span>
               </div>
               <div class="info">
                 <span class="labels">时间：</span>
-                <span class="text-content" style="font-size: 12px"> {{ item.createTime }}</span>
+                <span class="text-content" style="font-size: 12px">
+                  {{ item.createTime }}
+                </span>
               </div>
             </div>
 
@@ -93,12 +100,15 @@ onMounted(() => {
                 typeRed: item.onlineState == 0,
                 typeGreen: item.onlineState == 1,
               }"
-              >{{ item.onlineState == 1 ? "上线" : "下线" }}</span
             >
+              {{ item.onlineState == 1 ? '上线' : '下线' }}
+            </span>
 
             <div class="info addresswrap">
               <span class="labels">地址：</span>
-              <span class="text-content ciyao" style="font-size: 12px"> {{ addressHandle(item) }}</span>
+              <span class="text-content ciyao" style="font-size: 12px">
+                {{ addressHandle(item) }}
+              </span>
             </div>
           </div>
         </li>
@@ -179,7 +189,7 @@ onMounted(() => {
         position: absolute;
         height: 2px;
         width: 104%;
-        background-image: url("@/assets/img/zuo_xuxian.png");
+        background-image: url('@/assets/img/zuo_xuxian.png');
         bottom: -10px;
         left: -2%;
         background-size: cover;

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import dayjs from 'dayjs';
-import type {DateDataType} from "./index.d"
-import {useSettingStore} from "@/store/modules/screenSetting"
+import { reactive } from 'vue'
+import dayjs from 'dayjs'
+import type { DateDataType } from './index.d'
+import { useSettingStore } from '@/store/modules/screenSetting'
 
 const dateData = reactive<DateDataType>({
-  dateDay: "",
-  dateYear: "",
-  dateWeek: "",
-  timing:null
-});
+  dateDay: '',
+  dateYear: '',
+  dateWeek: '',
+  timing: null,
+})
 
-const { setSettingShow} =useSettingStore()
-const weekday= ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+const { setSettingShow } = useSettingStore()
+const weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 const timeFn = () => {
   dateData.timing = setInterval(() => {
-    dateData.dateDay = dayjs().format("YYYY-MM-DD hh : mm : ss");
-    dateData.dateWeek = weekday[dayjs().day()];
-  }, 1000);
-};
+    dateData.dateDay = dayjs().format('YYYY-MM-DD hh : mm : ss')
+    dateData.dateWeek = weekday[dayjs().day()]
+  }, 1000)
+}
 timeFn()
 </script>
 
@@ -35,8 +35,8 @@ timeFn()
     <div class="timers">
       {{ dateData.dateYear }} {{ dateData.dateWeek }} {{ dateData.dateDay }}
 
-      <div class="setting_icon"   @click="setSettingShow(true)">
-          <img src="@/assets/img/headers/setting.png" alt="设置">
+      <div class="setting_icon" @click="setSettingShow(true)">
+        <img src="@/assets/img/headers/setting.png" alt="设置" />
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@ timeFn()
 <style scoped lang="scss">
 .title_wrap {
   height: 60px;
-  background-image: url("../../../assets/img/top.png");
+  background-image: url('../../../assets/img/top.png');
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -54,7 +54,7 @@ timeFn()
   .guang {
     position: absolute;
     bottom: -26px;
-    background-image: url("../../../assets/img/guang.png");
+    background-image: url('../../../assets/img/guang.png');
     background-position: 80px center;
     width: 100%;
     height: 56px;
@@ -66,7 +66,7 @@ timeFn()
     top: -2px;
     width: 140px;
     height: 6px;
-    background-image: url("../../../assets/img/headers/juxing1.png");
+    background-image: url('../../../assets/img/headers/juxing1.png');
   }
 
   .zuojuxing {
@@ -91,7 +91,7 @@ timeFn()
       height: 20px;
       cursor: pointer;
       margin-left: 12px;
-      img{
+      img {
         width: 100%;
         height: 100%;
       }
