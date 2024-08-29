@@ -20,6 +20,7 @@
           type="danger"
           @click="batchRemove"
           :disabled="multipleSelection.length == 0"
+          v-hasPerm='`btn.User.remove`'
         >
           批量删除
         </el-button>

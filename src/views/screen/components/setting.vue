@@ -16,21 +16,12 @@ const init = () => {
   rightBottomRadio.value = indexConfig.value.rightBottomSwiper
 }
 init()
-const handleClose = () => {}
 
-const cancelClick = () => {
-  settingStore.setSettingShow(false)
-}
-
-const confirmClick = () => {}
 const isScaleChange = (flag: boolean) => {
   settingStore.setIsScale(flag)
 }
-const radiochange = (blag: boolean) => {
-  settingStore.setIsScale(blag)
-  // this.$store.commit('setting/updateSwiper', { val, type })
-}
-const indexRadioChange = (flag: boolean) => {
+
+const indexRadioChange = () => {
   settingStore.setIndexConfig({
     leftBottomSwiper: leftBottomRadio.value, //左轮播
     rightBottomSwiper: rightBottomRadio.value, //右下轮播
@@ -70,7 +61,7 @@ const indexRadioChange = (flag: boolean) => {
         <div class="setting_content">
           <el-radio-group
             v-model="leftBottomRadio"
-            @change="(flag) => indexRadioChange(flag as boolean)"
+            @change="() => indexRadioChange()"
           >
             <el-radio :label="true">是</el-radio>
             <el-radio :label="false">否</el-radio>
@@ -82,7 +73,7 @@ const indexRadioChange = (flag: boolean) => {
         <div class="setting_content">
           <el-radio-group
             v-model="rightBottomRadio"
-            @change="(flag) => indexRadioChange(flag as boolean)"
+            @change="() => indexRadioChange()"
           >
             <el-radio :label="true">是</el-radio>
             <el-radio :label="false">否</el-radio>

@@ -210,16 +210,16 @@ const onResize = debounce(async () => {
   updateSize()
   updateScale()
 }, props.delay)
-const initMutationObserver = () => {
-  const observer = (state.observer = new MutationObserver(() => {
-    onResize()
-  }))
-  observer.observe(screenWrapper.value!, {
-    attributes: true,
-    attributeFilter: ['style'],
-    attributeOldValue: true,
-  })
-}
+// const initMutationObserver = () => {
+//   const observer = (state.observer = new MutationObserver(() => {
+//     onResize()
+//   }))
+//   observer.observe(screenWrapper.value!, {
+//     attributes: true,
+//     attributeFilter: ['style'],
+//     attributeOldValue: true,
+//   })
+// }
 
 const clearListener = () => {
   window.removeEventListener('resize', onResize)

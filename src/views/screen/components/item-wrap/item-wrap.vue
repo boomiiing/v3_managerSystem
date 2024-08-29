@@ -1,14 +1,5 @@
 <script setup lang="ts">
 import BorderBox13 from '../datav/border-box-13'
-const props = withDefaults(
-  defineProps<{
-    // 标题
-    title: number | string
-  }>(),
-  {
-    title: '',
-  },
-)
 </script>
 
 <template>

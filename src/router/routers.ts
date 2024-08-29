@@ -42,6 +42,17 @@ export const constantRoute = [
     },
   },
   {
+    path: '/404',
+    component: () => import('@/views/404/index.vue'),
+    name: '404',
+    meta: {
+      title: '404',
+      hidden: true,
+    },
+  }
+]
+export const asyncRoute = [
+  {
     path: '/acl',
     component: () => import('@/layout/index.vue'),
     name: 'Acl',
@@ -137,15 +148,8 @@ export const constantRoute = [
       },
     ],
   },
-  {
-    path: '/404',
-    component: () => import('@/views/404/index.vue'),
-    name: '404',
-    meta: {
-      title: '404',
-      hidden: true,
-    },
-  },
+]
+export const anyRoute = [
   {
     path: '/:pathMatch(.*)*',
     redirect: '/404',
@@ -154,5 +158,5 @@ export const constantRoute = [
       title: '重定向',
       hidden: true,
     },
-  },
+  }
 ]

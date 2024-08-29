@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onBeforeUpdate, nextTick } from 'vue'
+import { computed, ref } from 'vue'
 import merge from 'lodash/merge'
 import { useElementSize } from '@vueuse/core'
 import type { PropType } from 'vue'

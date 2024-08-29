@@ -1,4 +1,4 @@
-import { ref, computed, reactive } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 // import { storeToRefs } from 'pinia';
 export const useSettingStore = defineStore('setting', () => {

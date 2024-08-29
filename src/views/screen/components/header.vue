@@ -8,7 +8,7 @@ const dateData = reactive<DateDataType>({
   dateDay: '',
   dateYear: '',
   dateWeek: '',
-  timing: null,
+  timing: null
 })
 
 const { setSettingShow } = useSettingStore()
