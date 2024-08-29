@@ -18,7 +18,7 @@ import { registerEcharts } from '@/plugins/echarts'
 import '@/assets/css/main.scss'
 import '@/assets/css/tailwind.css'
 import { mockXHR } from '../mock/index'
-import {hasPerm} from '@/directive/hasperm'
+import { hasPerm } from '@/directive/hasperm'
 mockXHR()
 const app = createApp(App)
 hasPerm(app)

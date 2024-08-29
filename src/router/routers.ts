@@ -49,7 +49,7 @@ export const constantRoute = [
       title: '404',
       hidden: true,
     },
-  }
+  },
 ]
 export const asyncRoute = [
   {
@@ -158,5 +158,5 @@ export const anyRoute = [
       title: '重定向',
       hidden: true,
     },
-  }
+  },
 ]
